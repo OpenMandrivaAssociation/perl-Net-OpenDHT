@@ -19,6 +19,7 @@ BuildRequires:  perl(Class::Accessor::Chained)
 BuildRequires:  perl(XML::LibXML)
 BuildRequires:	perl(Test::Pod)
 BuildRequires:	perl(Test::Pod::Coverage)
+BuildRequires:	perl(Test::Exception)
 BuildArch:      noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
