@@ -21,6 +21,7 @@ BuildRequires:	perl(Test::Pod)
 BuildRequires:	perl(Test::Pod::Coverage)
 BuildRequires:	perl(Test::Exception)
 BuildArch:      noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 The Net::OpenDHT module provides a simple interface to the Open DHT service. 
