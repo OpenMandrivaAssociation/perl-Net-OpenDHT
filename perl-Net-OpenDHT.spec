@@ -1,7 +1,7 @@
 %define module	Net-OpenDHT
 %define name	perl-%{module}
 %define version 0.33
-%define release %mkrel 4
+%define release %mkrel 5
 
 Name:		%{name}
 Version:	%{version}
@@ -21,7 +21,7 @@ BuildRequires:	perl(Test::Pod)
 BuildRequires:	perl(Test::Pod::Coverage)
 BuildRequires:	perl(Test::Exception)
 BuildArch:      noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The Net::OpenDHT module provides a simple interface to the Open DHT service. 
