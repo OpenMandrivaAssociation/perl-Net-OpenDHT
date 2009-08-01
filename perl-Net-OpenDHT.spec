@@ -1,16 +1,16 @@
-%define module	Net-OpenDHT
-%define name	perl-%{module}
-%define version 0.33
-%define release %mkrel 6
+%define upstream_name	 Net-OpenDHT
+%define upstream_version 0.33
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-Summary:    	Module to access the Open Distributed Hash Table (Open DHT)
-License:	GPL or Artistic
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
+Summary:    Module to access the Open Distributed Hash Table (Open DHT)
+License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		http://search.cpan.org/dist/%{module}/
-Source:		http://www.cpan.org/modules/by-module/Net/%{module}-%{version}.tar.bz2
+Url:		http://search.cpan.org/dist/%{upstream_name}/
+Source0:	http://www.cpan.org/modules/by-module/Net/%{upstream_name}-%{upstream_version}.tar.bz2
+
 %if %{mdkversion} < 1010
 BuildRequires:	perl-devel
 %endif
@@ -21,7 +21,7 @@ BuildRequires:	perl(Test::Pod)
 BuildRequires:	perl(Test::Pod::Coverage)
 BuildRequires:	perl(Test::Exception)
 BuildArch:      noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 The Net::OpenDHT module provides a simple interface to the Open DHT service. 
@@ -47,7 +47,7 @@ Read the following for full semantics about the Open DHT:
 
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -69,4 +69,3 @@ rm -rf %{buildroot}
 %doc CHANGES README
 %{perl_vendorlib}/Net
 %{_mandir}/man3/*
-
