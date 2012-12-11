@@ -1,27 +1,24 @@
 %define upstream_name	 Net-OpenDHT
 %define upstream_version 0.33
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 1
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	2
 
-Summary:    Module to access the Open Distributed Hash Table (Open DHT)
+Summary:	Module to access the Open Distributed Hash Table (Open DHT)
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{upstream_name}/
 Source0:	http://www.cpan.org/modules/by-module/Net/%{upstream_name}-%{upstream_version}.tar.bz2
 
-%if %{mdkversion} < 1010
 BuildRequires:	perl-devel
-%endif
-BuildRequires:  perl(App::Cache)
-BuildRequires:  perl(Class::Accessor::Chained)
-BuildRequires:  perl(XML::LibXML)
+BuildRequires:	perl(App::Cache)
+BuildRequires:	perl(Class::Accessor::Chained)
+BuildRequires:	perl(XML::LibXML)
 BuildRequires:	perl(Test::Pod)
 BuildRequires:	perl(Test::Pod::Coverage)
 BuildRequires:	perl(Test::Exception)
-BuildArch:      noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
+BuildArch:	noarch
 
 %description
 The Net::OpenDHT module provides a simple interface to the Open DHT service. 
@@ -50,22 +47,61 @@ Read the following for full semantics about the Open DHT:
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 # (misc) test are disabled because they do not work on the cluster
-#%{__make} test
+#make test
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc CHANGES README
 %{perl_vendorlib}/Net
 %{_mandir}/man3/*
+
+
+%changelog
+* Sat Aug 01 2009 JÃ©rÃ´me Quelin <jquelin@mandriva.org> 0.330.0-1mdv2010.0
++ Revision: 406172
+- rebuild using %%perl_convert_version
+
+* Fri Mar 06 2009 Michael Scherer <misc@mandriva.org> 0.33-6mdv2009.1
++ Revision: 349900
+- rebuild
+- disable test as they are not working on the cluster ( trying to access network to
+  check the DHT )
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - rebuild
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Sun Sep 16 2007 Guillaume Rousse <guillomovitch@mandriva.org> 0.33-2mdv2008.0
++ Revision: 88411
+- rebuild
+
+
+* Wed May 31 2006 Guillaume Rousse <guillomovitch@mandriva.org> 0.33-1mdv2007.0
+- New release 0.33
+- spec cleanup
+
+* Fri Jan 06 2006 Michael Scherer <misc@mandriva.org> 0.32-4mdk
+- fix missing BuildRequires
+
+* Wed Jan 04 2006 Michael Scherer <misc@mandriva.org> 0.32-3mdk
+- Do not ship empty dir
+
+* Mon Oct 10 2005 Nicolas Lécureuil <neoclust@mandriva.org> 0.32-2mdk
+- Fix BuildRequires
+
+* Wed Sep 21 2005 Michael Scherer <misc@mandriva.org> 0.32-1mdk
+- First mandriva package
+
