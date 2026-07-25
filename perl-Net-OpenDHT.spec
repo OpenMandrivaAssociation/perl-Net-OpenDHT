@@ -2,13 +2,13 @@
 %define upstream_version 0.33
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	4
+Version:	%{upstream_version}
+Release:	5
 
 Summary:	Module to access the Open Distributed Hash Table (Open DHT)
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}/
+Url:		https://metacpan.org/dist/Net-OpenDHT
 Source0:	http://www.cpan.org/modules/by-module/Net/%{upstream_name}-%{upstream_version}.tar.bz2
 
 BuildRequires:	make
