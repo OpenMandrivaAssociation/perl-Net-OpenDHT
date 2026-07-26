@@ -1,15 +1,13 @@
 %define upstream_name	 Net-OpenDHT
-%define upstream_version 0.33
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	5
+Version:	0.33
+Release:	6
 
 Summary:	Module to access the Open Distributed Hash Table (Open DHT)
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/Net-OpenDHT
-Source0:	http://www.cpan.org/modules/by-module/Net/%{upstream_name}-%{upstream_version}.tar.bz2
+Source0:	http://www.cpan.org/modules/by-module/Net/%{upstream_name}-%{version}.tar.bz2
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -45,7 +43,7 @@ Read the following for full semantics about the Open DHT:
 
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -67,9 +65,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 %changelog
 * Sat Aug 01 2009 JÃ©rÃ´me Quelin <jquelin@mandriva.org> 0.330.0-1mdv2010.0
 + Revision: 406172
-- rebuild using %%perl_convert_version
-
-* Fri Mar 06 2009 Michael Scherer <misc@mandriva.org> 0.33-6mdv2009.1
+- rebuild using %0.33 Fri Mar 06 2009 Michael Scherer <misc@mandriva.org> 0.33-6mdv2009.1
 + Revision: 349900
 - rebuild
 - disable test as they are not working on the cluster ( trying to access network to
